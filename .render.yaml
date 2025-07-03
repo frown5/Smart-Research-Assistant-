@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: smart-research-api
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
+    buildFilterPath: research-assistent
+    rootDir: research-assistent
+    envVars:
+      - key: PORT
+        value: 8080
