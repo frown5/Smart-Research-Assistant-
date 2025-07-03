@@ -2,5 +2,5 @@
   "build": {
     "command": "cd research-assistent && mvn clean package"
   },
-  "start": "java -jar research-assistent/target/research-assistent-0.0.1-SNAPSHOT.jar.jar"
+  "start": "java -jar research-assistent/target/research-assistent-0.0.1-SNAPSHOT.jar"
 }
