@@ -1,19 +1,19 @@
 package com.research.research_assistent;
 
-import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/research")
-@CrossOrigin(origins = "*")
-@AllArgsConstructor
+@RequestMapping("/api")
+@CrossOrigin(origins = "*") // enable CORS for frontend
 public class ResearchController {
-    private final ResearchService researchService;
 
-    @PostMapping("/process")
-    public ResponseEntity<String> processContent(@RequestBody ResearchRequest request) {
-        String result = researchService.processContent(request);
-        return ResponseEntity.ok(result);
+    @Autowired
+    private ResearchService researchService;
+
+    @PostMapping("/summarize")
+    public String summarize(@RequestBody ResearchRequest request) {
+        request.setOperation("summarize"); // force operation to summarize
+        return researchService.processContent(request);
     }
 }
