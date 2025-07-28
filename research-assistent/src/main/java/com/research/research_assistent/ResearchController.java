@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*") // enable CORS for frontend
+@CrossOrigin(origins = "http://localhost:5173") 
 public class ResearchController {
-
+    
     @Autowired
     private ResearchService researchService;
 
     @PostMapping("/summarize")
     public String summarize(@RequestBody ResearchRequest request) {
-        request.setOperation("summarize"); // force operation to summarize
+        request.setOperation("summarize");
         return researchService.processContent(request);
     }
 }
